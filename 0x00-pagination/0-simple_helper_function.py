@@ -3,9 +3,10 @@
 
 from typing import Tuple
 
+
 def index_range(page: int, page_size: int) -> Tuple:
-    """ 
-    Returns a tuple size containing start index and end index 
+    """
+    Returns a tuple size containing start index and end index
 
     Args:
         page (int) - Page number
