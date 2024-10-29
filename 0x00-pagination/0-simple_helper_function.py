@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" """
+""" A python script containing a simple helper function for pagination"""
 
 from typing import Tuple
 
