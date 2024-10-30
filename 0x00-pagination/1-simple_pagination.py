@@ -5,6 +5,7 @@ import csv
 import math
 from typing import Tuple, List
 
+
 # Simple helper function
 def index_range(page: int, page_size: int) -> Tuple:
     """
@@ -50,10 +51,9 @@ class Server:
 
         # Retrieve dataset and check If start index is out of range
         dataset = self.dataset()
-    
+
         if start_index >= len(dataset):
             return []
         else:
             # Return slice of dataset corresponding to list
             return dataset[start_index:end_index]
-
