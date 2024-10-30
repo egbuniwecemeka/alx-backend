@@ -48,8 +48,10 @@ class Server:
         # Calculate start and end index
         start_index, end_index = index_range(page, page_size)
 
-        # If start index is out of range, return an empty list
-        if start_index >= len(self.__dataset):
+        # Retrieve dataset and check If start index is out of range
+        dataset = self.dataset()
+    
+        if start_index >= len(dataset):
             return []
         else:
             # Return slice of dataset corresponding to list
