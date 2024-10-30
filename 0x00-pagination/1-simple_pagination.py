@@ -55,5 +55,5 @@ class Server:
             return []
         else:
             # Return slice of dataset corresponding to list
-            return self.__dataset(start_index, end_index)
+            return dataset[start_index, end_index]
 
