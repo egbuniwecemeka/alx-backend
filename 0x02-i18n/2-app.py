@@ -28,7 +28,7 @@ def get_locale():
     user = getattr(g, 'user', None)
     if user is not None and hasattr('user', 'locale'):
         return user.locale
-    return request.accept_languages(Config.LANGUAGES)
+    return request.accept_languages.best_match(Config.LANGUAGES)
 
 
 if __name__ == "__main__":
