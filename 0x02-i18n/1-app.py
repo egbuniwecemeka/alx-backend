@@ -23,24 +23,29 @@ def hello():
     return render_template('0-index.html')
 
 
+# Selector function
 @babel.localeselector
 def get_locale():
-    """Get the best matched language from user settings or request headers."""
-    # use locale from user settings, if user is logged in
+    """Get the best matched language for response based on user settings,
+    or from `Accept-Language` in request headers."""
+    # Check if there's a logged-in user with a preferred language
     user = getattr(g, 'user', None)
     if user is not None and hasattr(user, 'locale'):
         return user.locale
-    # else guess the language from the user accept
+    # else if no user defined locale, use browser's preferred language
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
+# Selector function
 @babel.timezoneselector
 def get_timezone():
-    """Get the timezone of the user, otherwise """
+    """Determines the right timezone of the user,
+    otherwise, defaults to application default timezone"""
+    # Check if there's a logged-in user with a timezone
     user = getattr(g, 'user', None)
     if user is not None and hasattr(user, 'timezone'):
         return user.timezone
-    #
+    # else, default to the application's default timezone
     return Config.BABEL_DEFAULT_TIMEZONE
 
 
