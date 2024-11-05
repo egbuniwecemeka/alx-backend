@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ A python script that sets up a Basic Flask App."""
 
-from flask import Flask, render_template, g, request
+from flask import Flask, g, request
 from flask_babel import Babel
 
 
