@@ -33,6 +33,7 @@ def get_locale():
     if user is not None and hasattr(user, 'locale'):
         return user.locale
     # else if no user defined locale, use browser's preferred language
+    print(f"{user.local}")
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
