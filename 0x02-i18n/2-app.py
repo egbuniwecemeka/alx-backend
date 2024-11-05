@@ -17,7 +17,7 @@ babel = Babel(app)
 
 
 # selector function
-@babel.timezoneselector
+@babel.localeselector
 def get_locale():
     """ Determine the best match with our supported languages """
     user = getattr(g, 'user', None)
