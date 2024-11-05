@@ -25,7 +25,7 @@ def hello():
 
 @babel.localeselector
 def get_locale():
-    """Get the best matched language based on user settings or request headers."""
+    """Get the best matched language from user settings or request headers."""
     # use locale from user settings, if user is logged in
     user = getattr(g, 'user', None)
     if user is not None and hasattr(user, 'locale'):
