@@ -5,9 +5,15 @@ from flask import Flask, render_template
 from flask_babel import gettext as _, Babel, request
 
 
+class Config:
+    """ Default configuration class """
+    LANGUAGES = ['en', 'fr']
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+
+
 app = Flask(__name__)
-app.config['BABEL_DEFAULT_LOCALE'] = 'en'
-app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
+app.congig.from_object(Config)
 babel = Babel(app)
 
 
@@ -20,6 +26,10 @@ def hello():
 @babel.localeselector
 def get_locale():
     """ Gets the requested language set in URL parameter. """
+    user = getattr(g, 'user', None)
+
+    if user is not None and hasattr('user', 'locale'):
+        return user.locale 
     return request.args.get('lang', 'en')
 
 
