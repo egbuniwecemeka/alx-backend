@@ -2,8 +2,14 @@
 """ A python script that parametrizes templates based on translations """
 
 from flask import Flask, render_template
+from jinja2 import Environment, FileSystemLoader
 from flask_babel import gettext as _, Babel, request
 
+# Set up Jinja2 environment
+env = Environment(
+    loader=FileSystemLoader('templates'),
+    autoescape=True  # Enable autoescape for security
+)
 
 app = Flask(__name__)
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
