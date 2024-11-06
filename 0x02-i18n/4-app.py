@@ -29,6 +29,7 @@ def get_locale():
     res = request.args.get('locale')
     if res in Config.LANGUAGES:
         return res
+    return request.accept_languages.best_match(Config.LANGUAGES)
 
 
 if __name__ == "__main__":
