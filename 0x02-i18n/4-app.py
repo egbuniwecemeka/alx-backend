@@ -18,13 +18,13 @@ babel = Babel(app)
 
 
 @app.route("/", strict_slashes=False)
-def hello():
+def hello() -> str:
     """ returns the welcome messaage with translations """
     return render_template('4-index.html')
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """ Gets the requested language set in URL parameter. """
     res = request.args.get('locale')
     if res and res in Config.LANGUAGES:
