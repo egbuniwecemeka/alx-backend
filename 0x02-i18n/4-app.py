@@ -30,7 +30,7 @@ def get_locale():
 
     if user is not None and hasattr('user', 'locale'):
         return user.locale 
-    return request.args.get('lang', 'en')
+    return request.accept_languages.best_match('lang', 'en')
 
 
 if __name__ == "__main__":
