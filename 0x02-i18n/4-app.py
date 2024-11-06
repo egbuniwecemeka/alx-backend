@@ -27,7 +27,7 @@ def hello():
 def get_locale():
     """ Gets the requested language set in URL parameter. """
     res = request.args.get('locale')
-    if res in Config.LANGUAGES:
+    if res and res in Config.LANGUAGES:
         return res
     return request.accept_languages.best_match(Config.LANGUAGES)
 
