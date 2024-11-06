@@ -2,7 +2,7 @@
 """ A python script that parametrizes templates based on translations """
 
 from flask import Flask, render_template
-from flask_babel import gettext as _, Babel
+from flask_babel import gettext as _, Babel, request
 
 
 app = Flask(__name__)
@@ -15,6 +15,11 @@ babel = Babel(app)
 def hello():
     """ returns the welcome messaage with translations """
     return render_template('3-index.html')
+
+@babel.localeselector
+def get_locale():
+    """ Gets the requested language set in URL parameter. """
+    return request.args.get('lang', 'en')
 
 
 if __name__ == "__main__":
