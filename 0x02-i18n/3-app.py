@@ -10,6 +10,7 @@ app.configure['BABEL_DEFAULT_lOCALE'] = 'en'
 app.configure['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
 babel = Babel(app)
 
+
 @app.route("/", strict_slashes=False)
 def hello():
     """ returns the welcome messaage with translations """
