@@ -6,7 +6,7 @@ from flask_babel import gettext as _, Babel
 
 
 app = Flask(__name__)
-app.configure['BABEL_DEFAULT_lOCALE'] = 'en'
+app.configure['BABEL_DEFAULT_LOCALE'] = 'en'
 app.configure['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
 babel = Babel(app)
 
