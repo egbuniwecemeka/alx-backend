@@ -26,11 +26,9 @@ def hello():
 @babel.localeselector
 def get_locale():
     """ Gets the requested language set in URL parameter. """
-    user = getattr(g, 'user', None)
-
-    if user is not None and hasattr('user', 'locale'):
-        return user.locale 
-    return request.accept_languages.best_match('lang', 'en')
+    res = request.args.get('locale')
+    if res in Config.LANGUAGES:
+        return res
 
 
 if __name__ == "__main__":
