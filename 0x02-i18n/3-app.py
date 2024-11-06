@@ -16,6 +16,7 @@ def hello():
     """ returns the welcome messaage with translations """
     return render_template('3-index.html')
 
+
 @babel.localeselector
 def get_locale():
     """ Gets the requested language set in URL parameter. """
