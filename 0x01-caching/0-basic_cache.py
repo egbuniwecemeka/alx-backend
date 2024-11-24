@@ -3,8 +3,9 @@
 
 BaseCaching = __import__('base_caching').BaseCaching
 
-def BasicCache(BaseCaching):
+class BasicCache(BaseCaching):
     """A caching system"""
+
     def put(self, key, item):
         """Adds an item in the cache"""
         if key is None or item is None:
