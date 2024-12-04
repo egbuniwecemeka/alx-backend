@@ -4,10 +4,12 @@ import { createClient } from "redis";
 
 const client = createClient();
 
-// Method 1: Promise (using then & catch)
-client.connect().then(() => {
+// Setup event listeners for successful and unsuccessful connection
+client.on('connect', () => {
     console.log('Redis client connected to the server');
-}).catch((err) => {
+});
+
+client.on('error', (err) => {
     console.log(`Redis client not connected to the server: ${err}`);
 });
 
