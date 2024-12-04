@@ -17,7 +17,7 @@ client.on('error', (err) => {
 function setNewSchool(schoolName, value) {
   // redis.print is a built-in callback function in NodeJs
   // it logs responses or error messages to output in readable format
-  client.set(schoolName, value, redis.print());
+  client.set(schoolName, value, client.print());
 }
 
 function displaySchoolValue(schoolName) {
