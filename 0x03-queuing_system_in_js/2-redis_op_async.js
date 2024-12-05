@@ -3,11 +3,12 @@
 import { createClient } from "redis";
 import { promisify } from 'util';
 
-// 
+// create redis client
 const client = createClient();
 
-// 
+// Promisify SET
 const asynSet = promisify(client.set).bind(client);
+// Promisify GET
 const asyncGet = promisify(client.get).bind(client);
 
 // Connect to the redis server and display a log message on success
@@ -23,7 +24,7 @@ client.on('error', (err) => {
 // Sets key, value pairs to the redis instance
 async function setNewSchool(schoolName, value) {
   try {
-    const setResponse = await asynSet(schoolName, value, client.print);
+    const setResponse = await asynSet(schoolName, value);
     console.log('Reply:', setResponse);
   } catch (error) {
     console.log(`${error}`);
