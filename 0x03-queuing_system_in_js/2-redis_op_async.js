@@ -26,9 +26,9 @@ function setNewSchool(schoolName, value) {
 async function displaySchoolValue(schoolName) {
   try {
     const res = await asyncProm(schoolName);
-    console.log(`Value: ${res}`);
+    console.log(`${res}`);
   } catch (error) {
-    console.log(`Error: ${error}`)
+    console.log(`${error}`)
   }
 }
 
