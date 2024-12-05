@@ -18,8 +18,13 @@ client.on('error', (err) => {
 });
 
 // Sets key, value pairs to the redis instance
-function setNewSchool(schoolName, value) {
-  client.set(schoolName, value, client.print);
+async function setNewSchool(schoolName, value) {
+  try {
+    const setResponse = await client.set(schoolName, value, client.print);
+    console.log('Reply:', setResponse);
+  } catch (error) {
+    console.log(`${error}`);
+  }
 }
 
 // Retrieves value of a key from redis instance
