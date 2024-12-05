@@ -3,9 +3,12 @@
 import { createClient } from "redis";
 import { promisify } from 'util';
 
-
+// 
 const client = createClient();
-const asyncProm = promisify(client.get).bind(client);
+
+// 
+const asynSet = promisify(client.set).bind(client);
+const asyncGet = promisify(client.get).bind(client);
 
 // Connect to the redis server and display a log message on success
 client.on('connect', () => {
@@ -20,7 +23,7 @@ client.on('error', (err) => {
 // Sets key, value pairs to the redis instance
 async function setNewSchool(schoolName, value) {
   try {
-    const setResponse = await client.set(schoolName, value, client.print);
+    const setResponse = await asynSet(schoolName, value, client.print);
     console.log('Reply:', setResponse);
   } catch (error) {
     console.log(`${error}`);
@@ -30,7 +33,7 @@ async function setNewSchool(schoolName, value) {
 // Retrieves value of a key from redis instance
 async function displaySchoolValue(schoolName) {
   try {
-    const res = await asyncProm(schoolName);
+    const res = await asyncGet(schoolName);
     console.log(`${res}`);
   } catch (error) {
     console.log(`${error}`)
