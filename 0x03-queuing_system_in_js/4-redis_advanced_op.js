@@ -34,6 +34,6 @@ client.hgetall('HolbertonSchools', (err, res) => {
   if (err) {
     console.error(`${err}`);
   } else {
-    console.log(`${JSON.stringify(res)}`);
+    console.log(`${JSON.stringify(res, null, 2)}`);
   }
 });
