@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 // Import createClient 
-import { createClient } from "redis";
+import { createClient, print } from "redis";
 
 // Create redis client
 const client = createClient();
@@ -24,9 +24,9 @@ const values = {
   'Paris': 2
 }
 
-// Store values using hSet
+// Store values using hset
 for (const [field, value] of Object.entries(values)) {
-  client.hset('HolbertonSchools', field, value, client.print);
+  client.hset('HolbertonSchools', field, value, print);
 }
 
 // Display stored value using hGetAll
