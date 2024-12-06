@@ -25,12 +25,12 @@ const values = {
 }
 
 // Store values using hSet
-for (const [field, value] in Object.entries(values)) {
-  const hset = client.hSet('HolbertonSchools', field, value, client.print);
+for (const [field, value] of Object.entries(values)) {
+  client.hset('HolbertonSchools', field, value, client.print);
 }
 
 // Display stored value using hGetAll
-client.hGetAll('HolbertonSchools', (err, res) => {
+client.hgetall('HolbertonSchools', (err, res) => {
   if (err) {
     console.error(`${err}`);
   } else {
