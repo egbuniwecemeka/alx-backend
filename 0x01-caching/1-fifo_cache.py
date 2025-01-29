@@ -14,7 +14,7 @@ class FIFOCache(BaseCaching):
         """Adds a key and its corresponding item to the cache"""
         if key is None or item is None:
             return
-        
+
         self.cache_data[key] = item
 
         # FIFO Logic
@@ -22,10 +22,9 @@ class FIFOCache(BaseCaching):
             first = list(self.cache_data.keys())[0]
             fifo = self.cache_data.pop(first)
             print(f'DISCARD: {first}')
-    
+
     def get(self, key):
         """Retrieves a key from the cache"""
         if key is None or key not in self.cache_data:
             return None
         return self.cache_data[key]
-    
