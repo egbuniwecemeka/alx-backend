@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+"""LIFOCache that inherits from BaseCaching and is a caching system"""
+
+BaseCaching = __import__('base_caching').BaseCaching
+
+class LIFOCache(BaseCaching):
+    """LIFO caching system
+    
+        # # methods
+        list(dict.keys())[-1]
+        OrderedDict.popitem(last=True)
+        next(reversed(dict))
+    """
+    def __init__(self):
+        super().__init__()
+    
+    def put(self, key, item):
+        """Removes the most recent key and its corresponding item in the cache"""
+        if key is None or item is None:
+            return
+
+        self.cache_data[key] = item
+
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            last = next(reversed(self.cache_data))
+            lifo = self.cache_data.pop(last)
+            print(f'DISCARD: {last}')
+
+    def get(self, key):
+        """Retrieves a key from the cache"""
+        if key is None or key not in self.cache_data:
+            return None
