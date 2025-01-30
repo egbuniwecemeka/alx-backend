@@ -15,7 +15,7 @@ class LIFOCache(BaseCaching):
         super().__init__()
     
     def put(self, key, item):
-        """Removes the most recent key and its corresponding item in the cache"""
+        """Adds an item and removes the most recentitem if limit is exceeded"""
         if key is None or item is None:
             return
 
@@ -23,10 +23,11 @@ class LIFOCache(BaseCaching):
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             last = next(reversed(self.cache_data))
-            lifo = self.cache_data.pop(last)
+            self.cache_data.pop(last)
             print(f'DISCARD: {last}')
 
     def get(self, key):
         """Retrieves a key from the cache"""
         if key is None or key not in self.cache_data:
             return None
+        return self.cache_data[key]
