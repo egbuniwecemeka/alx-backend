@@ -3,9 +3,10 @@
 
 BaseCaching = __import__('base_caching').BaseCaching
 
+
 class LIFOCache(BaseCaching):
     """LIFO caching system
-    
+
         # # methods
         list(dict.keys())[-1]
         OrderedDict.popitem(last=True)
@@ -23,7 +24,7 @@ class LIFOCache(BaseCaching):
         if key in self.cache_data:
             self.stack.remove(key)
 
-        self.cache_data[key] = item # Insert new key-item
+        self.cache_data[key] = item  # Insert new key-item
         self.stack.append(key)  # Add key to insertion order
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
