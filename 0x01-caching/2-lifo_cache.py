@@ -14,12 +14,15 @@ class LIFOCache(BaseCaching):
     def __init__(self):
         super().__init__()
         self.stack = []
-    
+
     def put(self, key, item):
         """Adds an item and removes the most recentitem if limit is exceeded"""
         if key is None or item is None:
             return
-        
+
+        if key in self.cache_data:
+            self.stack.remove(key)
+
         self.cache_data[key] = item # Insert new key-item
         self.stack.append(key)  # Add key to insertion order
 
