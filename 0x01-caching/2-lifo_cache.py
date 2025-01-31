@@ -28,7 +28,7 @@ class LIFOCache(BaseCaching):
         self.stack.append(key)  # Add key to insertion order
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            last = self.stack.pop(-2) # Remove second-last inserted key
+            last = self.stack.pop(-2)  # Remove second-last inserted key
             del self.cache_data[last]   # Delete from cache
             print(f'DISCARD: {last}')
 
