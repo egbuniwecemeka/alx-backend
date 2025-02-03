@@ -25,9 +25,9 @@ class LRUCache(BaseCaching):
             del self.cache_data[lru_key]
             print(f'DISCARD: {lru_key}')
 
-            # Add key to cache as the recently used key
-            self.cache_data[key] = item
-            self.stack.append(key)
+        # Add key to cache as the recently used key
+        self.cache_data[key] = item
+        self.stack.append(key)
 
     def get(self, key):
         """Get an item from the cache using its key"""
