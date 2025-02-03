@@ -17,7 +17,7 @@ class LRUCache(BaseCaching):
             return
 
         if key in self.cache_data:
-            # if key exists, key will be removed from the stack (re-added later)
+            # remove key from the stack if it exists (re-added later)
             self.stack.remove(key)
         elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             # Remove the least recently used key. (First item in list)
