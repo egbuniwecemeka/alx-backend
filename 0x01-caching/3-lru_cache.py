@@ -33,7 +33,7 @@ class LRUCache(BaseCaching):
         """Get an item from the cache using its key"""
         if key is None or key not in self.cache_data:
             return None
-        
+
         # Move key to end of list (Marked as recently used)
         self.stack.remove(key)
         self.stack.append(key)
